@@ -1,0 +1,26 @@
+name: CI for CPP_TCP_TIC_TAC_TOE
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build and test
+        run: |
+          make test
+          make server
+          make client
+
+      - name: Artifact binaries
+        uses: actions/upload-artifact@v2
+        with:
+          name: binaries
+          path: binaries
