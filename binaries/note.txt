@@ -1,0 +1,1 @@
+Folder where binaries are stored in ci/cd

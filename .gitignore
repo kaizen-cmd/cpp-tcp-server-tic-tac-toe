@@ -1,3 +1,4 @@
 .vscode
-binaries
+binaries/game_tcp_server
+binaries/game_client
 .DS_Store
