@@ -23,8 +23,14 @@ jobs:
       - name: Artifact binaries
         uses: actions/upload-artifact@v2
         with:
-          name: binaries
-          path: binaries
+          name: game_client
+          path: binaries/game_client
+
+      - name: Artifact binaries
+        uses: actions/upload-artifact@v2
+        with:
+          name: game_tcp_server
+          path: binaries/game_tcp_server
 
   create_release:
     needs: build
@@ -36,24 +42,20 @@ jobs:
       - name: Download binaries
         uses: actions/download-artifact@v2
         with:
-          name: binaries
-          path: binaries
+          name: game_client
+          path: binaries/game_client
+
+      - name: Download binaries
+        uses: actions/download-artifact@v2
+        with:
+          name: game_tcp_server
+          path: binaries/game_tcp_server
 
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
-          body: Release notes for version ${{ github.run_number }}
-          draft: false
-          prerelease: false
-
-      - name: Upload Binaries
-        id: upload-binaries
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: binaries/*
-          asset_name: binaries.zip
-          asset_content_type: application/zip
+          body_path: binaries/release_notes.txt
+          files: |
+            binaries/game_client
+            binaries/game_tcp_server
