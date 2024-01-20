@@ -21,16 +21,17 @@ jobs:
           make client
 
       - name: Artifact binaries
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: game_client
           path: binaries/game_client
-
+      
       - name: Artifact binaries
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: game_tcp_server
           path: binaries/game_tcp_server
+
 
   create_release:
     needs: build
