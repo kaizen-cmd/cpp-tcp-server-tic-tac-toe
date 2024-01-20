@@ -52,5 +52,5 @@ jobs:
           body_path: binaries/release_notes.txt
           tag_name: v1
           files: |
-            game_client
-            game_tcp_server
+            ./game_client
+            ./game_tcp_server
