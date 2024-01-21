@@ -50,8 +50,8 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          body_path: binaries/release_notes.txt
-          tag_name: v1.${{ github.run_number }}
+          body_path: binaries/release_notes.md
+          tag_name: v1
           files: |
             game_client/game_client
             game_tcp_server/game_tcp_server
