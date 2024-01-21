@@ -51,7 +51,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           body_path: binaries/release_notes.txt
-          tag_name: v1
+          tag_name: v1.${{ github.run_number }}
           files: |
             game_client/game_client
             game_tcp_server/game_tcp_server
